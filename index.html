@@ -5,283 +5,1043 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HirePulse — Modern Job Portal</title>
   <link rel="stylesheet" href="styles.css" />
-  <!-- FontAwesome for clean UI icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
+
 <body>
 
-  <!-- AUTH SCREEN (Login / Sign up) -->
+  <!-- AUTH SCREEN -->
   <section id="authScreen" class="auth-screen">
+
     <div class="auth-aside">
       <div class="nav-brand auth-brand">
         <i class="fa-solid fa-briefcase brand-icon"></i>
         <span>HirePulse</span>
       </div>
+
       <h1>Jobs across India, all in one place.</h1>
-      <p>Browse openings in Bengaluru, Hyderabad, Pune and more, or post a role and review applicants.</p>
+
+      <p>
+        Browse openings in Bengaluru, Hyderabad, Pune and more,
+        or post a role and review applicants.
+      </p>
+
       <ul class="auth-points">
-        
-        <li><i class="fa-solid fa-circle-check"></i> Internships and fresher roles</li>
-        <li><i class="fa-solid fa-circle-check"></i> Apply with your PDF resume</li>
+        <li>
+          <i class="fa-solid fa-circle-check"></i>
+          Internships and fresher roles
+        </li>
+
+        <li>
+          <i class="fa-solid fa-circle-check"></i>
+          Apply with your PDF resume
+        </li>
       </ul>
     </div>
 
     <div class="auth-panel">
+
       <div class="auth-card">
+
         <div class="auth-tabs">
-          <button type="button" id="tabLogin" class="auth-tab active" onclick="switchAuthTab('login')">Log in</button>
-          <button type="button" id="tabSignup" class="auth-tab" onclick="switchAuthTab('signup')">Sign up</button>
+          <button
+            type="button"
+            id="tabLogin"
+            class="auth-tab active"
+            onclick="switchAuthTab('login')">
+            Log in
+          </button>
+
+          <button
+            type="button"
+            id="tabSignup"
+            class="auth-tab"
+            onclick="switchAuthTab('signup')">
+            Sign up
+          </button>
         </div>
 
         <div id="authError" class="auth-error hidden" role="alert"></div>
 
-        <!-- Login form -->
+        <!-- LOGIN -->
         <form id="loginForm" onsubmit="handleLogin(event)">
+
           <h2 class="auth-title">Welcome back</h2>
-          <p class="auth-sub">Log in to continue to your dashboard.</p>
+
+          <p class="auth-sub">
+            Log in to continue to your dashboard.
+          </p>
+
           <div class="form-group">
             <label for="loginEmail">Email address</label>
-            <input type="email" id="loginEmail" required autocomplete="email" placeholder="aarav@example.com" />
+
+            <input
+              type="email"
+              id="loginEmail"
+              required
+              autocomplete="email"
+              placeholder="aarav@example.com" />
           </div>
+
           <div class="form-group">
+
             <label for="loginPassword">Password</label>
+
             <div class="password-field">
-              <input type="password" id="loginPassword" required autocomplete="current-password" placeholder="Your password" />
-              <button type="button" class="toggle-pw" onclick="togglePassword('loginPassword', this)" aria-label="Show password">
+
+              <input
+                type="password"
+                id="loginPassword"
+                required
+                autocomplete="current-password"
+                placeholder="Your password" />
+
+              <button
+                type="button"
+                class="toggle-pw"
+                onclick="togglePassword('loginPassword', this)"
+                aria-label="Show password">
+
                 <i class="fa-regular fa-eye"></i>
+
               </button>
+
             </div>
           </div>
-          <button type="submit" class="btn btn-primary auth-submit">Log in</button>
-          <p class="auth-switch">New to HirePulse? <button type="button" class="link-btn" onclick="switchAuthTab('signup')">Create an account</button></p>
+
+          <button type="submit" class="btn btn-primary auth-submit">
+            Log in
+          </button>
+
+          <p class="auth-switch">
+            New to HirePulse?
+
+            <button
+              type="button"
+              class="link-btn"
+              onclick="switchAuthTab('signup')">
+              Create an account
+            </button>
+          </p>
+
         </form>
 
-        <!-- Sign up form -->
-        <form id="signupForm" class="hidden" onsubmit="handleSignup(event)">
+
+        <!-- SIGN UP -->
+        <form
+          id="signupForm"
+          class="hidden"
+          onsubmit="handleSignup(event)">
+
           <h2 class="auth-title">Create your account</h2>
-          <p class="auth-sub">Takes less than a minute.</p>
+
+          <p class="auth-sub">
+            Takes less than a minute.
+          </p>
+
           <div class="form-group">
+
             <label for="signupName">Full name</label>
-            <input type="text" id="signupName" required autocomplete="name" placeholder="Aarav Sharma" />
+
+            <input
+              type="text"
+              id="signupName"
+              required
+              autocomplete="name"
+              placeholder="Aarav Sharma" />
+
           </div>
+
+
           <div class="form-group">
+
             <label for="signupEmail">Email address</label>
-            <input type="email" id="signupEmail" required autocomplete="email" placeholder="aarav@example.com" />
+
+            <input
+              type="email"
+              id="signupEmail"
+              required
+              autocomplete="email"
+              placeholder="aarav@example.com" />
+
           </div>
+
+
           <div class="role-picker">
+
             <span class="role-legend">I want to</span>
+
             <div class="role-options">
+
               <label class="role-option">
-                <input type="radio" name="signupRole" value="seeker" checked />
-                <span><i class="fa-solid fa-magnifying-glass"></i> Find a job</span>
+
+                <input
+                  type="radio"
+                  name="signupRole"
+                  value="seeker"
+                  checked />
+
+                <span>
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  Find a job
+                </span>
+
               </label>
+
+
               <label class="role-option">
-                <input type="radio" name="signupRole" value="employer" />
-                <span><i class="fa-solid fa-building"></i> Hire talent</span>
+
+                <input
+                  type="radio"
+                  name="signupRole"
+                  value="employer" />
+
+                <span>
+                  <i class="fa-solid fa-building"></i>
+                  Hire talent
+                </span>
+
               </label>
+
             </div>
           </div>
+
+
+          <div
+            id="companySignupGroup"
+            class="form-group hidden">
+
+            <label for="signupCompany">
+              Company name
+            </label>
+
+            <input
+              type="text"
+              id="signupCompany"
+              autocomplete="organization"
+              placeholder="e.g. Apple" />
+
+            <small class="help-text">
+              Recruiters must be approved by an admin before they can post jobs.
+            </small>
+
+          </div>
+
+
           <div class="form-group">
-            <label for="signupPassword">Password</label>
+
+            <label for="signupPassword">
+              Password
+            </label>
+
             <div class="password-field">
-              <input type="password" id="signupPassword" required minlength="8" autocomplete="new-password" placeholder="At least 8 characters" />
-              <button type="button" class="toggle-pw" onclick="togglePassword('signupPassword', this)" aria-label="Show password">
+
+              <input
+                type="password"
+                id="signupPassword"
+                required
+                minlength="8"
+                autocomplete="new-password"
+                placeholder="At least 8 characters" />
+
+              <button
+                type="button"
+                class="toggle-pw"
+                onclick="togglePassword('signupPassword', this)"
+                aria-label="Show password">
+
                 <i class="fa-regular fa-eye"></i>
+
               </button>
+
             </div>
+
           </div>
+
+
           <div class="form-group">
-            <label for="signupConfirm">Confirm password</label>
-            <input type="password" id="signupConfirm" required autocomplete="new-password" placeholder="Re-enter your password" />
+
+            <label for="signupConfirm">
+              Confirm password
+            </label>
+
+            <input
+              type="password"
+              id="signupConfirm"
+              required
+              autocomplete="new-password"
+              placeholder="Re-enter your password" />
+
           </div>
-          <button type="submit" class="btn btn-primary auth-submit">Create account</button>
-          <p class="auth-switch">Already have an account? <button type="button" class="link-btn" onclick="switchAuthTab('login')">Log in</button></p>
+
+
+          <button
+            type="submit"
+            class="btn btn-primary auth-submit">
+
+            Create account
+
+          </button>
+
+
+          <p class="auth-switch">
+
+            Already have an account?
+
+            <button
+              type="button"
+              class="link-btn"
+              onclick="switchAuthTab('login')">
+
+              Log in
+
+            </button>
+
+          </p>
+
         </form>
+
       </div>
     </div>
   </section>
 
-  <!-- Top Navigation Header -->
-  <header class="navbar hidden" id="appHeader">
+
+  <!-- NAVIGATION -->
+  <header
+    class="navbar hidden"
+    id="appHeader">
+
     <div class="nav-brand">
+
       <i class="fa-solid fa-briefcase brand-icon"></i>
+
       <span>HirePulse</span>
+
     </div>
-    
+
+
     <div class="nav-controls">
+
       <div class="user-chip">
-        <div class="avatar" id="userAvatar">?</div>
-        <div class="user-meta">
-          <strong id="userNameLabel"></strong>
-          <small id="userRoleLabel"></small>
+
+        <div
+          class="avatar"
+          id="userAvatar">
+          ?
         </div>
+
+        <div class="user-meta">
+
+          <strong id="userNameLabel"></strong>
+
+          <small id="userRoleLabel"></small>
+
+        </div>
+
       </div>
-      <button class="btn btn-secondary btn-sm" onclick="resetPortalData()">
-        <i class="fa-solid fa-rotate-left"></i> Reset Demo Data
+
+
+      <button
+        class="btn btn-secondary btn-sm"
+        onclick="resetPortalData()">
+
+        <i class="fa-solid fa-rotate-left"></i>
+
+        Reset Demo Data
+
       </button>
-      <button class="btn btn-secondary btn-sm" onclick="handleLogout()">
-        <i class="fa-solid fa-right-from-bracket"></i> Log out
+
+
+      <button
+        class="btn btn-secondary btn-sm"
+        onclick="handleLogout()">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        Log out
+
       </button>
+
     </div>
+
   </header>
 
-  <!-- Notification Toast Container -->
-  <div id="toastContainer" class="toast-container"></div>
 
-  <!-- Main Content Layout -->
-  <main class="container hidden" id="appMain">
-    
-    <!-- JOB SEEKER VIEW -->
-    <section id="seekerSection" class="portal-section">
+  <!-- TOAST -->
+  <div
+    id="toastContainer"
+    class="toast-container">
+  </div>
+
+
+  <!-- MAIN -->
+  <main
+    class="container hidden"
+    id="appMain">
+
+
+    <!-- JOB SEEKER -->
+    <section
+      id="seekerSection"
+      class="portal-section">
+
       <div class="hero-banner">
+
         <h2>Find Your Next Career Move</h2>
-        <p>Discover opportunities from top tech companies and innovative startups.</p>
-        
-        <!-- Search & Multi-Filter Bar -->
+
+        <p>
+          Discover opportunities from top tech companies
+          and innovative startups.
+        </p>
+
+
         <div class="search-box">
+
           <div class="input-icon-group">
+
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" id="searchInput" placeholder="Search by job title, skill, company or city..." oninput="handleSearchAndFilter()" />
+
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search by job title, skill, company or city..."
+              oninput="handleSearchAndFilter()" />
+
           </div>
-          
-          <select id="categoryFilter" onchange="handleSearchAndFilter()">
-            <option value="all">All Categories</option>
-            <option value="Engineering">Engineering</option>
-            <option value="Design">Design</option>
-            <option value="Marketing">Marketing</option>
-            <option value="Product">Product</option>
-            <option value="Data & AI">Data &amp; AI</option>
+
+
+          <select
+            id="categoryFilter"
+            onchange="handleSearchAndFilter()">
+
+            <option value="all">
+              All Categories
+            </option>
+
+            <option value="Engineering">
+              Engineering
+            </option>
+
+            <option value="Design">
+              Design
+            </option>
+
+            <option value="Marketing">
+              Marketing
+            </option>
+
+            <option value="Product">
+              Product
+            </option>
+
+            <option value="Data & AI">
+              Data &amp; AI
+            </option>
+
           </select>
 
-          <select id="typeFilter" onchange="handleSearchAndFilter()">
-            <option value="all">All Job Types</option>
-            <option value="Full-time">Full-time</option>
-            <option value="Remote">Remote</option>
-            <option value="Contract">Contract</option>
-            <option value="Internship">Internship</option>
+
+          <select
+            id="typeFilter"
+            onchange="handleSearchAndFilter()">
+
+            <option value="all">
+              All Job Types
+            </option>
+
+            <option value="Full-time">
+              Full-time
+            </option>
+
+            <option value="Remote">
+              Remote
+            </option>
+
+            <option value="Contract">
+              Contract
+            </option>
+
+            <option value="Internship">
+              Internship
+            </option>
+
           </select>
+
         </div>
+
       </div>
 
-      <!-- Stats Bar & Controls -->
+
       <div class="view-header">
-        <span id="jobCountBadge" class="results-count">Loading jobs...</span>
+
+        <span
+          id="jobCountBadge"
+          class="results-count">
+          Loading jobs...
+        </span>
+
+
         <div class="tab-filters">
-          <button id="tabAllJobs" class="tab-btn active" onclick="switchSeekerTab('all')">All Listings</button>
-          <button id="tabSavedJobs" class="tab-btn" onclick="switchSeekerTab('saved')">
-            <i class="fa-solid fa-bookmark"></i> Bookmarked (<span id="savedCount">0</span>)
+
+          <button
+            id="tabAllJobs"
+            class="tab-btn active"
+            onclick="switchSeekerTab('all')">
+
+            All Listings
+
           </button>
-          <button id="tabMyApps" class="tab-btn" onclick="switchSeekerTab('applied')">
-            <i class="fa-solid fa-paper-plane"></i> My Applications (<span id="appliedCount">0</span>)
+
+
+          <button
+            id="tabSavedJobs"
+            class="tab-btn"
+            onclick="switchSeekerTab('saved')">
+
+            <i class="fa-solid fa-bookmark"></i>
+
+            Bookmarked
+            (<span id="savedCount">0</span>)
+
           </button>
+
+
+          <button
+            id="tabMyApps"
+            class="tab-btn"
+            onclick="switchSeekerTab('applied')">
+
+            <i class="fa-solid fa-paper-plane"></i>
+
+            My Applications
+            (<span id="appliedCount">0</span>)
+
+          </button>
+
         </div>
+
       </div>
 
-      <!-- Jobs Grid -->
-      <div id="jobGrid" class="cards-grid"></div>
+
+      <div
+        id="jobGrid"
+        class="cards-grid">
+      </div>
+
     </section>
 
-    <!-- EMPLOYER VIEW -->
-    <section id="employerSection" class="portal-section hidden">
+
+    <!-- EMPLOYER -->
+    <section
+      id="employerSection"
+      class="portal-section hidden">
+
       <div class="dashboard-header">
+
         <div>
+
           <h2>Employer Dashboard</h2>
-          <p>Manage job openings, post new positions, and evaluate applicant profiles.</p>
+
+          <p>
+            Manage job openings, post new positions,
+            and evaluate applicant profiles.
+          </p>
+
         </div>
-        <button class="btn btn-primary" onclick="openModal('postJobModal')">
-          <i class="fa-solid fa-plus"></i> Post New Position
+
+
+        <button
+          class="btn btn-primary"
+          onclick="openPostJobModal()">
+
+          <i class="fa-solid fa-plus"></i>
+
+          Post New Position
+
         </button>
+
       </div>
 
-      <!-- Overview Cards -->
+
       <div class="stats-grid">
+
         <div class="stat-card">
+
           <i class="fa-solid fa-folder-open stat-icon text-blue"></i>
+
           <div>
-            <h3 id="statTotalJobs">0</h3>
-            <p>Active Postings</p>
+
+            <h3 id="statTotalJobs">
+              0
+            </h3>
+
+            <p>
+              Active Postings
+            </p>
+
           </div>
+
         </div>
+
+
         <div class="stat-card">
+
           <i class="fa-solid fa-users stat-icon text-green"></i>
+
           <div>
-            <h3 id="statTotalApps">0</h3>
-            <p>Total Applicants</p>
+
+            <h3 id="statTotalApps">
+              0
+            </h3>
+
+            <p>
+              Total Applicants
+            </p>
+
           </div>
+
         </div>
+
       </div>
 
-      <!-- Job Management & Applicant Pipeline Table -->
+
       <div class="table-card">
-        <h3>Active Postings & Candidate Pipeline</h3>
+
+        <h3>
+          Active Postings & Candidate Pipeline
+        </h3>
+
         <div class="table-wrapper">
+
           <table class="data-table">
+
             <thead>
+
               <tr>
+
                 <th>Job Title</th>
                 <th>Category</th>
                 <th>Type</th>
                 <th>Applicants</th>
                 <th>Actions</th>
+
               </tr>
+
             </thead>
+
             <tbody id="employerJobTableBody">
-              <!-- Dynamically populated -->
             </tbody>
+
           </table>
+
         </div>
+
       </div>
+
+    </section>
+
+
+    <!-- ADMIN -->
+    <section
+      id="adminSection"
+      class="portal-section hidden">
+
+      <div class="dashboard-header">
+
+        <div>
+
+          <h2>Admin Dashboard</h2>
+
+          <p>
+            Control recruiters, job postings,
+            applicants, and user accounts.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="stats-grid">
+
+        <div class="stat-card">
+
+          <i class="fa-solid fa-users stat-icon text-blue"></i>
+
+          <div>
+
+            <h3 id="adminUserCount">
+              0
+            </h3>
+
+            <p>
+              Total Users
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <i class="fa-solid fa-building stat-icon text-green"></i>
+
+          <div>
+
+            <h3 id="adminEmployerCount">
+              0
+            </h3>
+
+            <p>
+              Recruiters
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <i class="fa-solid fa-briefcase stat-icon text-blue"></i>
+
+          <div>
+
+            <h3 id="adminJobCount">
+              0
+            </h3>
+
+            <p>
+              Total Jobs
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <i class="fa-solid fa-file-lines stat-icon text-green"></i>
+
+          <div>
+
+            <h3 id="adminApplicationCount">
+              0
+            </h3>
+
+            <p>
+              Total Applications
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="table-card">
+
+        <h3>
+          Recruiter Accounts
+        </h3>
+
+        <div class="table-wrapper">
+
+          <table class="data-table">
+
+            <thead>
+
+              <tr>
+                <th>Recruiter</th>
+                <th>Company</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+
+            </thead>
+
+            <tbody id="adminRecruiterTableBody">
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+
+      <div class="table-card admin-table-spacing">
+
+        <h3>
+          All User Accounts
+        </h3>
+
+        <div class="table-wrapper">
+
+          <table class="data-table">
+
+            <thead>
+
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Company</th>
+                <th>Actions</th>
+              </tr>
+
+            </thead>
+
+            <tbody id="adminUserTableBody">
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+
+      <div class="table-card admin-table-spacing">
+
+        <h3>
+          All Job Postings
+        </h3>
+
+        <div class="table-wrapper">
+
+          <table class="data-table">
+
+            <thead>
+
+              <tr>
+                <th>Job</th>
+                <th>Company</th>
+                <th>Recruiter</th>
+                <th>Applicants</th>
+                <th>Actions</th>
+              </tr>
+
+            </thead>
+
+            <tbody id="adminJobTableBody">
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+
+      <div class="table-card admin-table-spacing">
+
+        <h3>
+          All Applications
+        </h3>
+
+        <div class="table-wrapper">
+
+          <table class="data-table">
+
+            <thead>
+
+              <tr>
+                <th>Applicant</th>
+                <th>Email</th>
+                <th>Company</th>
+                <th>Job</th>
+                <th>Status</th>
+              </tr>
+
+            </thead>
+
+            <tbody id="adminApplicationTableBody">
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
     </section>
 
   </main>
 
-  <!-- MODAL 1: Post Job Modal -->
-  <div id="postJobModal" class="modal-overlay hidden">
+
+  <!-- POST JOB MODAL -->
+  <div
+    id="postJobModal"
+    class="modal-overlay hidden">
+
     <div class="modal-content">
+
       <div class="modal-header">
-        <h3>Post New Opportunity</h3>
-        <button class="close-btn" onclick="closeModal('postJobModal')">&times;</button>
+
+        <h3>
+          Post New Opportunity
+        </h3>
+
+        <button
+          class="close-btn"
+          onclick="closeModal('postJobModal')">
+
+          &times;
+
+        </button>
+
       </div>
-      <form id="postJobForm" onsubmit="handlePostJob(event)">
+
+
+      <form
+        id="postJobForm"
+        onsubmit="handlePostJob(event)">
+
         <div class="form-group">
-          <label for="jobTitle">Job Title *</label>
-          <input type="text" id="jobTitle" required placeholder="e.g. Senior Frontend Developer" />
+
+          <label for="jobTitle">
+            Job Title *
+          </label>
+
+          <input
+            type="text"
+            id="jobTitle"
+            required
+            placeholder="e.g. Senior Frontend Developer" />
+
         </div>
+
+
         <div class="form-row">
+
           <div class="form-group">
-            <label for="companyName">Company Name *</label>
-            <input type="text" id="companyName" required placeholder="e.g. Zoho, Infosys, Acme Technologies Pvt. Ltd." />
+
+            <label for="companyName">
+              Company Name *
+            </label>
+
+            <input
+              type="text"
+              id="companyName"
+              required
+              readonly
+              placeholder="Company from recruiter account" />
+
+            <small class="help-text">
+              This is taken from your approved recruiter account.
+            </small>
+
           </div>
+
+
           <div class="form-group">
-            <label for="jobCategory">Category *</label>
-            <select id="jobCategory" required>
-              <option value="Engineering">Engineering</option>
-              <option value="Design">Design</option>
-              <option value="Marketing">Marketing</option>
-              <option value="Product">Product</option>
-              <option value="Data & AI">Data &amp; AI</option>
+
+            <label for="jobCategory">
+              Category *
+            </label>
+
+            <select
+              id="jobCategory"
+              required>
+
+              <option value="Engineering">
+                Engineering
+              </option>
+
+              <option value="Design">
+                Design
+              </option>
+
+              <option value="Marketing">
+                Marketing
+              </option>
+
+              <option value="Product">
+                Product
+              </option>
+
+              <option value="Data & AI">
+                Data &amp; AI
+              </option>
+
             </select>
+
           </div>
+
         </div>
+
+
         <div class="form-row">
+
           <div class="form-group">
-            <label for="jobType">Type *</label>
-            <select id="jobType" required>
-              <option value="Full-time">Full-time</option>
-              <option value="Remote">Remote</option>
-              <option value="Contract">Contract</option>
-              <option value="Internship">Internship</option>
+
+            <label for="jobType">
+              Type *
+            </label>
+
+            <select
+              id="jobType"
+              required>
+
+              <option value="Full-time">
+                Full-time
+              </option>
+
+              <option value="Remote">
+                Remote
+              </option>
+
+              <option value="Contract">
+                Contract
+              </option>
+
+              <option value="Internship">
+                Internship
+              </option>
+
             </select>
+
           </div>
+
+
           <div class="form-group">
-            <label for="jobSalary">Salary Range *</label>
-            <input type="text" id="jobSalary" required placeholder="e.g. ₹12 - 18 LPA" />
+
+            <label for="jobSalary">
+              Salary Range *
+            </label>
+
+            <input
+              type="text"
+              id="jobSalary"
+              required
+              placeholder="e.g. ₹12 - 18 LPA" />
+
           </div>
+
         </div>
+
+
         <div class="form-group">
-          <label for="jobLocation">Location *</label>
-          <input type="text" id="jobLocation" list="cityList" required placeholder="e.g. Bengaluru, Karnataka or Remote (India)" />
+
+          <label for="jobLocation">
+            Location *
+          </label>
+
+          <input
+            type="text"
+            id="jobLocation"
+            list="cityList"
+            required
+            placeholder="e.g. Bengaluru, Karnataka or Remote (India)" />
+
+
           <datalist id="cityList">
+
             <option value="Bengaluru, Karnataka"></option>
             <option value="Hyderabad, Telangana"></option>
             <option value="Pune, Maharashtra"></option>
@@ -292,73 +1052,271 @@
             <option value="Kolkata, West Bengal"></option>
             <option value="Ahmedabad, Gujarat"></option>
             <option value="Remote (India)"></option>
+
           </datalist>
+
         </div>
+
+
         <div class="form-group">
-          <label for="jobDescription">Description *</label>
-          <textarea id="jobDescription" rows="4" required placeholder="Describe responsibilities and requirements..."></textarea>
+
+          <label for="jobDescription">
+            Description *
+          </label>
+
+          <textarea
+            id="jobDescription"
+            rows="4"
+            required
+            placeholder="Describe responsibilities and requirements...">
+          </textarea>
+
         </div>
+
+
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" onclick="closeModal('postJobModal')">Cancel</button>
-          <button type="submit" class="btn btn-primary">Publish Posting</button>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="closeModal('postJobModal')">
+
+            Cancel
+
+          </button>
+
+          <button
+            type="submit"
+            class="btn btn-primary">
+
+            Publish Posting
+
+          </button>
+
         </div>
+
       </form>
+
     </div>
+
   </div>
 
-  <!-- MODAL 2: Apply to Job Modal -->
-  <div id="applyModal" class="modal-overlay hidden">
+
+  <!-- APPLY MODAL -->
+  <div
+    id="applyModal"
+    class="modal-overlay hidden">
+
     <div class="modal-content">
+
       <div class="modal-header">
-        <h3 id="applyModalTitle">Apply for Job</h3>
-        <button class="close-btn" onclick="closeModal('applyModal')">&times;</button>
+
+        <h3 id="applyModalTitle">
+          Apply for Job
+        </h3>
+
+        <button
+          class="close-btn"
+          onclick="closeModal('applyModal')">
+
+          &times;
+
+        </button>
+
       </div>
-      <form id="applyForm" onsubmit="handleApplySubmit(event)">
-        <input type="hidden" id="applyJobId" />
+
+
+      <form
+        id="applyForm"
+        onsubmit="handleApplySubmit(event)">
+
+        <input
+          type="hidden"
+          id="applyJobId" />
+
+
         <div class="form-group">
-          <label for="applicantName">Full Name *</label>
-          <input type="text" id="applicantName" required placeholder="Aarav Sharma" />
+
+          <label for="applicantName">
+            Full Name *
+          </label>
+
+          <input
+            type="text"
+            id="applicantName"
+            required
+            placeholder="Aarav Sharma" />
+
         </div>
+
+
         <div class="form-group">
-          <label for="applicantEmail">Email Address *</label>
-          <input type="email" id="applicantEmail" required readonly placeholder="aarav@example.com" />
+
+          <label for="applicantEmail">
+            Email Address *
+          </label>
+
+          <input
+            type="email"
+            id="applicantEmail"
+            required
+            readonly
+            placeholder="aarav@example.com" />
+
         </div>
+
+
         <div class="form-group">
-          <label for="coverLetter">Cover Letter / Note</label>
-          <textarea id="coverLetter" rows="3" placeholder="Explain briefly why you are a great fit..."></textarea>
+
+          <label for="coverLetter">
+            Cover Letter / Note
+          </label>
+
+          <textarea
+            id="coverLetter"
+            rows="3"
+            placeholder="Explain briefly why you are a great fit...">
+          </textarea>
+
         </div>
+
+
         <div class="form-group">
-          <label for="resumeUpload">Upload Resume (PDF - Max 2MB) *</label>
-          <input type="file" id="resumeUpload" accept=".pdf" required />
-          <small class="help-text">File will be converted and stored securely in browser storage.</small>
+
+          <label for="resumeUpload">
+            Upload Resume (PDF - Max 2MB) *
+          </label>
+
+          <input
+            type="file"
+            id="resumeUpload"
+            accept=".pdf"
+            required />
+
+          <small class="help-text">
+            File will be converted and stored securely in browser storage.
+          </small>
+
         </div>
+
+
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" onclick="closeModal('applyModal')">Cancel</button>
-          <button type="submit" class="btn btn-primary">Submit Application</button>
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="closeModal('applyModal')">
+
+            Cancel
+
+          </button>
+
+          <button
+            type="submit"
+            class="btn btn-primary">
+
+            Submit Application
+
+          </button>
+
         </div>
+
       </form>
+
     </div>
+
   </div>
 
-  <!-- MODAL 3: View Applicants Modal (Employer) -->
-  <div id="viewApplicantsModal" class="modal-overlay hidden">
+
+  <!-- VIEW APPLICANTS MODAL -->
+  <div
+    id="viewApplicantsModal"
+    class="modal-overlay hidden">
+
     <div class="modal-content modal-lg">
+
       <div class="modal-header">
-        <h3 id="applicantsModalTitle">Applicants for Position</h3>
-        <button class="close-btn" onclick="closeModal('viewApplicantsModal')">&times;</button>
+
+        <h3 id="applicantsModalTitle">
+          Applicants for Position
+        </h3>
+
+        <button
+          class="close-btn"
+          onclick="closeModal('viewApplicantsModal')">
+
+          &times;
+
+        </button>
+
       </div>
+
+
       <div class="modal-body">
-        <div id="applicantsListContainer" class="applicant-cards-list">
-          <!-- Applicants rendered here -->
+
+        <div
+          id="applicantsListContainer"
+          class="applicant-cards-list">
         </div>
+
       </div>
+
     </div>
+
   </div>
+
 
   <footer class="footer">
+  <div class="footer-contact">
+    <h2>Contact Us</h2>
+
+    <div class="contact-details">
+
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+        <div>
+          <h4>Email</h4>
+          <a href="mailto:support@hirepulse.com">
+            support@hirepulse.com
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fa-solid fa-phone"></i>
+        </div>
+        <div>
+          <h4>Phone</h4>
+          <a href="tel:+919876543210">
+            +91 98765 43210
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <div>
+          <h4>Location</h4>
+          <p>Bengaluru, Karnataka, India</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-line"></div>
+
+  <div class="footer-bottom">
     <p>&copy; 2026 HirePulse. All rights reserved.</p>
-  </footer>
+  </div>
+</footer>
 
   <script src="script.js"></script>
+
 </body>
 </html>
